@@ -188,11 +188,13 @@ var module = (function() {
   // Anything that is being returned is made public and can be invoked from
   // outside our lexical scope
   return {
-    // Code here.
+    publicMethod: function() {
+      return privateMethod()
+    }
   };
 
 })();
-
+module.publicMethod();
 
 
 /******************************************************************************\
@@ -208,7 +210,14 @@ var secondLevelFriends = ["Anne", "Harry", "Quinton"];
 var allUsers = ["Tom", "Dick", "Harry", "Anne", "Quinton", "Katie", "Mary"];
 
 function findPotentialFriends(existingFriends) {
+  return function(x) {
+    for (var i = 0; i < existingFriends.length; i++) {
+    if (existingFriends[i] === x) {
+      return false;
+    }
 
+    } return true;
+  }
 }
 
 var isNotAFriend = findPotentialFriends( friends );
