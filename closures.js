@@ -105,19 +105,23 @@ http://stackoverflow.com/questions/17776940/javascript-module-pattern-with-examp
 
 function counterFactory(value) {
 
-  // Code here.
-
-
+  var total = value;
   return {
-  }
+    inc: function() {
+      return total += 1;
+    },
+    dec: function() {
+      return total -= 1;
+    }
+  };
 }
 
 
 counter = counterFactory(10);
-// counter.inc() // 11
-// counter.inc() // 12
-// counter.inc() // 13
-// counter.dec() // 12
+counter.inc() // 11
+counter.inc() // 12
+counter.inc() // 13
+counter.dec() // 12
 
 
 
@@ -141,10 +145,12 @@ function motivation(firstname, lastname) {
   var welcomeText = 'You\'re doing awesome, keep it up ';
 
   // code message function here.
-
+  function message() {
+    return (welcomeText + firstname + " " + lastname + ".");
+  }
 
   //Uncommment this to return the value of your invoked message function
-  //return message();
+  return message();
 
 }
 
